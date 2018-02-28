@@ -4,7 +4,9 @@ import domain.Personne;
 import jpa.EntityManagerHelper;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 public class PersonneDAO implements GenericDAO<Personne, Long> {
 
@@ -21,7 +23,12 @@ public class PersonneDAO implements GenericDAO<Personne, Long> {
   @Override
   public Personne read(Long id) {
 
-    return EntityManagerHelper.getEntityManager().find(Personne.class, id);
+    EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
+    EntityManager manager = factory.createEntityManager();
+    Personne personne = manager.find(Personne.class,id);
+    manager.close();
+    factory.close();
+    return personne;
   }
 
   @Override

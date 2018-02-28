@@ -1,4 +1,4 @@
-package fr.istic.sir.rest;
+package rest;
 
 import domain.Chauffage;
 import domain.Equipement;
@@ -8,6 +8,7 @@ import service.PersonneDAO;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Path("/hello")
 public class SampleWebService {
@@ -30,22 +31,21 @@ public class SampleWebService {
     }
 
     @GET
-    @Path("/person")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Personne findPerson() {
-        Personne p = new Personne();
-        p.setPrenom("toto");
-        p.setNom("titi");
-        return p;
+    public Response findPerson(@PathParam("id") long id) {
+        Personne p = dao.read(id);
+        return Response.status(200).entity("name : " + p.getNom() + ", prenom : " + p.getPrenom() + ", email" + p.getMail()).build();
+
     }
 
-    @POST
+    /*@POST
     @Path("/person")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Personne createPerson(Personne p) {
             return dao.create(p);
-    }
+    }*/
 
     @GET
     @Path("/residence")
