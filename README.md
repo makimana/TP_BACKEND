@@ -5,11 +5,11 @@ Notre base de donnée est sur le serveur de l'istic comme nous l'avons précisé
 Pour démarrer le servlet, il faut démarrer la commande tomcat7: Run puisqu'il s'agit d'un projet maven.
 
 Les API à considérer sont surtout pour la création, la récupération et la suppression des éléments pour le concept de Personne. Ainsi, nous avons:
-GET 	/person 	display all the people
-GET 	/person/{id}/homes 	display all the houses owned by the person with the given {id} parameter
-POST 	/person 	create a new person
-GET 	/home 	display all the homes
-POST 	/home 	create a new home
+GET 	/person 	display all the people,
+GET 	/person/{id}/homes 	display all the houses owned by the person with the given {id} parameter,
+POST 	/person 	create a new person,
+GET 	/home 	display all the homes,
+POST 	/home 	create a new home,
 
 Quelques exemples de requêtes:
 
