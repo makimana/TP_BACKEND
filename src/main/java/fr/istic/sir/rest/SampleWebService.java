@@ -49,7 +49,7 @@ public class SampleWebService {
 
     @GET
     @Path("/residence")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_JSON})
     public Residence getHome() {
         Residence h = new Residence();
         h.setId(1);
