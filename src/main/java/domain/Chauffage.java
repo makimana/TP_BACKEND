@@ -1,49 +1,44 @@
 package domain;
 
-import java.util.ArrayList;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
-import antlr.collections.List;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 @Entity
 
-    public class Chauffage extends IntelligentPeripherik {
-        private Residence residence;
-        private String power;
+public class Chauffage extends IntelligentPeripherik {
+
+  private Residence residence;
+  private String power;
 
 
-        public Chauffage(){
+  public Chauffage() {
 
-            super();
-        }
+    super();
+  }
 
-        @ManyToOne
-        @JsonIgnore
-        public Residence getResidence(){
+  @ManyToOne
+  @JsonIgnore
+  public Residence getResidence() {
 
-            return this.residence;
-        }
-        public void setResidence(Residence residence){
-            this.residence = residence;
+    return this.residence;
+  }
 
-        }
-        public String getPower() {
-            return power;
-        }
+  public void setResidence(Residence residence) {
+    this.residence = residence;
 
-        public void setPower(String power) {
-            this.power = power;
-        }
+  }
+
+  public String getPower() {
+    return power;
+  }
+
+  public void setPower(String power) {
+    this.power = power;
+  }
 
 
-
-
-
-    }
+}
 
 

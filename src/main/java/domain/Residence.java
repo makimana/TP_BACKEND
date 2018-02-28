@@ -15,86 +15,96 @@ import javax.persistence.OneToMany;
 import java.util.List;
 
 
-    @Entity
-    public class Residence {
-        private long id;
-        private int taille;
-        private int nb_pieces;
-        private Personne self;
-        private List<Chauffage> chauffage = new ArrayList<Chauffage>();
+@Entity
+public class Residence {
 
-        public Residence(){
+  private long id;
+  private int taille;
+  private int nb_pieces;
+  private Personne self;
+  private List<Chauffage> chauffage = new ArrayList<Chauffage>();
 
-            super();
-        }
+  public Residence() {
 
-        public Residence(int taille, int nb_pieces){
-            this.taille= taille;
-            this.nb_pieces= nb_pieces;
-        }
-        @Id
-        @GeneratedValue
-        public Long getId(){
+    super();
+  }
 
-            return id;
-        }
-        public void setId(long id){
+  public Residence(int taille, int nb_pieces) {
+    this.taille = taille;
+    this.nb_pieces = nb_pieces;
+  }
 
-            this.id=id;
-        }
-        public int getTaille(){
+  @Id
+  @GeneratedValue
+  public Long getId() {
 
-            return taille;
-        }
-        public void setTaille(int taille){
-            this.taille=taille;
+    return id;
+  }
 
-        }
-        public int getNb_pieces(){
+  public void setId(long id) {
 
-            return nb_pieces;
-        }
-        public void setNb_pieces(int nb_pieces){
+    this.id = id;
+  }
 
-            this.nb_pieces= nb_pieces;
-        }
-        @ManyToOne
-        @JsonIgnore
-        public Personne getSelf(){
-            return this.self;
-        }
+  public int getTaille() {
 
-        @Transient
-        @JsonIgnore
-        public List <Equipement> getResidenceEquipements() {
-            return this.self.getEquipements();
-        }
+    return taille;
+  }
 
-        @Transient
-        @JsonIgnore
-        public void setResidenceEquipements(Equipement equipements) {
+  public void setTaille(int taille) {
+    this.taille = taille;
 
-            this.self.getEquipements().add(equipements);
-        }
+  }
 
-        public void setSelf(Personne self){
+  public int getNb_pieces() {
 
-            this.self= self;
-        }
-        @OneToMany(mappedBy = "residence")
-        public List<Chauffage> getChauffage(){
+    return nb_pieces;
+  }
 
-            return chauffage;
-        }
-        public void setChauffage(List<Chauffage> chauffage){
+  public void setNb_pieces(int nb_pieces) {
 
-            this.chauffage = chauffage;
-        }
+    this.nb_pieces = nb_pieces;
+  }
 
-        public void addChauffage(Chauffage ch1) {
-            chauffage.add(ch1);
+  @ManyToOne
+  @JsonIgnore
+  public Personne getSelf() {
+    return this.self;
+  }
 
-        }
-    }
+  @Transient
+  @JsonIgnore
+  public List<Equipement> getResidenceEquipements() {
+    return this.self.getEquipements();
+  }
+
+  @Transient
+  @JsonIgnore
+  public void setResidenceEquipements(Equipement equipements) {
+
+    this.self.getEquipements().add(equipements);
+  }
+
+  public void setSelf(Personne self) {
+
+    this.self = self;
+  }
+
+  @OneToMany(mappedBy = "residence")
+  public List<Chauffage> getChauffage() {
+
+    return chauffage;
+  }
+
+  public void setChauffage(List<Chauffage> chauffage) {
+
+    this.chauffage = chauffage;
+  }
+
+  public void addChauffage(Chauffage ch1) {
+    chauffage.add(ch1);
+
+  }
+}
 
 
